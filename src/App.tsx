@@ -19,7 +19,7 @@ function App() {
                 <section className="paper-card rounded-2xl overflow-hidden">
                   <div className="coral-gradient p-6 relative overflow-hidden">
                     <h2 className="text-3xl font-handdrawn text-white flex items-center gap-2 relative z-10">
-                      Business Intelligence AI
+                      CIO Assist
                     </h2>
                     <div className="absolute inset-0 bg-ink opacity-5 pattern-dots"></div>
                   </div>
@@ -27,8 +27,8 @@ function App() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                       <StatsCard
                         icon={<Globe2 className="w-6 h-6 text-coral-500" />}
-                        title="Global Reach"
-                        value="200+ Regions"
+                        title="Global Research"
+                        value="5+ Regions"
                       />
                       <StatsCard
                         icon={<Building2 className="w-6 h-6 text-coral-600" />}
@@ -38,12 +38,12 @@ function App() {
                       <StatsCard
                         icon={<Users2 className="w-6 h-6 text-coral-500" />}
                         title="Company Sizes"
-                        value="All Ranges"
+                        value="1-5000+"
                       />
                       <StatsCard
                         icon={<BarChart3 className="w-6 h-6 text-coral-600" />}
                         title="Departments"
-                        value="15+ Types"
+                        value="10+ Teams"
                       />
                     </div>
                     <AnalysisForm />
