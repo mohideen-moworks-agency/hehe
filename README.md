@@ -2,7 +2,7 @@
 
 ![Moworks.AI Platform](public/moworks-logo.svg)
 
-## Overview
+## Overvieww
 
 Moworks.AI is a sophisticated business analysis platform that leverages multiple AI models to provide detailed insights and recommendations for businesses. The platform offers:
 
