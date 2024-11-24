@@ -73,8 +73,8 @@ function AnalysisForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <SelectField
           icon={<Globe className="w-5 h-5 text-coral-500" />}
           label="Region"
@@ -111,11 +111,7 @@ function AnalysisForm() {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full py-4 px-6 rounded-lg font-dosis font-semibold text-lg
-          text-ink bg-paper border-2 border-ink shadow-drawn
-          hover:translate-y-[-2px] hover:shadow-drawn-lg
-          active:translate-y-[1px] active:shadow-drawn
-          transition-all duration-200
+        className={`button-handdrawn w-full py-3 px-4 rounded-lg font-playful text-white text-lg
           ${loading ? 'opacity-50 cursor-not-allowed' : ''}
         `}
       >
@@ -141,32 +137,31 @@ function SelectField({
   options: string[];
 }) {
   return (
-    <div className="bg-white rounded-xl p-6">
-      <label className="block text-base font-dosis font-semibold text-ink mb-3">
+    <div className="bg-white rounded-lg p-4">
+      <label className="block text-sm font-playful font-medium text-ink mb-2">
         {label}
       </label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           {icon}
         </div>
         <select
           name={name}
           value={value}
           onChange={onChange}
-          className="block w-full pl-12 pr-10 py-3 text-ink bg-paper border-2 border-ink 
-                   rounded-lg shadow-drawn font-inter
-                   focus:outline-none focus:shadow-drawn-lg focus:translate-y-[-2px]
-                   transition-all duration-200"
+          className="appearance-none block w-full pl-10 pr-8 py-2.5 text-ink bg-white 
+                   border-2 border-ink rounded-lg font-outfit text-sm
+                   focus:outline-none focus:border-coral-500"
           required
         >
           <option value="">Select {label}</option>
           {options.map(option => (
-            <option key={option} value={option} className="py-2">
+            <option key={option} value={option}>
               {option}
             </option>
           ))}
         </select>
-        <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
           <svg className="w-4 h-4 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>

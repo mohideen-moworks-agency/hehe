@@ -5,12 +5,12 @@ function Navbar() {
   const { user, signIn, signOut } = useAuth();
 
   return (
-    <nav className="bg-white border-b border-gray-200">
+    <nav className="bg-paper border-b-2 border-ink shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <img src="/moworks-logo.svg" alt="Moworks Logo" className="h-8 w-auto" />
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-playful font-semibold text-ink">
               Moworks.AI
             </span>
           </div>
@@ -19,14 +19,13 @@ function Navbar() {
             {user ? (
               <div className="flex items-center space-x-4">
                 <div className="text-sm">
-                  <p className="text-gray-900 font-medium">{user.email}</p>
-                  <p className="text-gray-500 text-xs">Pro Account</p>
+                  <p className="text-ink font-outfit">{user.email}</p>
+                  <p className="text-ink/70 text-xs font-outfit">Pro Account</p>
                 </div>
                 <button
                   onClick={signOut}
-                  className="px-4 py-2 text-sm font-medium text-white 
-                           bg-[#FF8360] hover:bg-[#ff6b40] transition-colors 
-                           duration-200 rounded-lg"
+                  className="button-handdrawn px-4 py-2 text-sm font-playful text-white 
+                           hover:bg-coral-400 transition-colors duration-200 rounded-lg"
                 >
                   Sign Out
                 </button>
@@ -34,9 +33,8 @@ function Navbar() {
             ) : (
               <button
                 onClick={signIn}
-                className="px-4 py-2 text-sm font-medium text-white 
-                         bg-[#FF8360] hover:bg-[#ff6b40] transition-colors 
-                         duration-200 rounded-lg"
+                className="button-handdrawn px-4 py-2 text-sm font-playful text-white 
+                         hover:bg-coral-400 transition-colors duration-200 rounded-lg"
               >
                 Sign In with Google
               </button>
