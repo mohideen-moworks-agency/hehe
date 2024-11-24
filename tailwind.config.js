@@ -20,8 +20,8 @@ export default {
         ink: 'rgb(44, 62, 80)',
       },
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        handdrawn: ['Architects Daughter', 'cursive'],
+        dosis: ['Dosis', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       borderWidth: {
         '3': '3px',
