@@ -1,14 +1,27 @@
-// Add your credentials here
+import { loadEnvConfig } from './env';
+
+// Load environment variables
+loadEnvConfig();
+
+// Firebase configuration
 export const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBhu3XaqnTHSFx2bjF0D2dsjLV_4T0bquM",
-  authDomain: "moworks-ai.firebaseapp.com",
-  projectId: "moworks-ai",
-  storageBucket: "moworks-ai.firebasestorage.app",
-  messagingSenderId: "848601523782",
-  appId: "1:848601523782:web:91a88e94973958f2c18c47"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-export const PERPLEXITY_API_KEY = "YOUR_PERPLEXITY_API_KEY";
+// AI Model API Keys
+export const PERPLEXITY_API_KEY = import.meta.env.VITE_PERPLEXITY_API_KEY;
+export const CLAUDE_API_KEY = import.meta.env.VITE_CLAUDE_API_KEY;
+
+// Upstash Redis configuration
+export const UPSTASH_REDIS = {
+  url: import.meta.env.VITE_UPSTASH_REDIS_URL,
+  token: import.meta.env.VITE_UPSTASH_REDIS_TOKEN
+};
 
 // Rate limiting configuration
 export const RATE_LIMIT = {

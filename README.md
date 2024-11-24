@@ -1,114 +1,131 @@
 # Moworks.AI - Business Analysis Platform
 
+![Moworks.AI Platform](public/moworks-logo.svg)
+
 ## Overview
-Moworks.AI is a sophisticated business analysis platform that leverages AI to provide detailed insights and recommendations for businesses across various industries. The platform uses the Perplexity API for generating comprehensive business analyses and Firebase for authentication and data management.
 
-## Features
-- **AI-Powered Analysis**: Detailed business analysis using Perplexity API
-- **User Authentication**: Secure Google authentication via Firebase
-- **Rate Limiting**: 3 analyses per user per day
-- **Responsive Design**: Professional UI that works across all devices
-- **Real-time Updates**: Instant analysis results with live updates
+Moworks.AI is a sophisticated business analysis platform that leverages multiple AI models to provide detailed insights and recommendations for businesses. The platform offers:
 
-## Tech Stack
-- **Frontend**: React with TypeScript
-- **Styling**: Tailwind CSS
-- **Authentication**: Firebase Auth
-- **API Integration**: Perplexity API
-- **State Management**: React Context
-- **Build Tool**: Vite
+- **Dual AI Analysis**: Choose between Perplexity (Mixtral-8x7B) and Claude-3 Opus for varied analysis depths
+- **Rate-Limited Access**: 3 analyses per user per day to ensure quality and prevent abuse
+- **Real-time Dashboard**: Track your analysis usage and history
+- **Secure Authentication**: Google sign-in powered by Firebase
 
-## Prerequisites
-- Node.js 16+
-- Firebase account
-- Perplexity API key
+## Quick Start
 
-## Setup Instructions
-
-1. **Clone the Repository**
+1. **Clone and Install**
 ```bash
 git clone <repository-url>
 cd moworks-ai
-```
-
-2. **Install Dependencies**
-```bash
 npm install
 ```
 
-3. **Environment Configuration**
+2. **Set Up Environment**
 Create a `.env` file in the root directory:
 ```env
+# Firebase Configuration
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
 VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
 VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 VITE_FIREBASE_APP_ID=your_firebase_app_id
+
+# AI Model API Keys
 VITE_PERPLEXITY_API_KEY=your_perplexity_api_key
+VITE_CLAUDE_API_KEY=your_claude_api_key
+
+# Upstash Redis (Rate Limiting)
+VITE_UPSTASH_REDIS_URL=your_upstash_url
+VITE_UPSTASH_REDIS_TOKEN=your_upstash_token
 ```
 
-4. **Firebase Setup**
-- Create a new Firebase project
-- Enable Google Authentication
-- Add authorized domains in Firebase Console
-- Copy Firebase configuration to `.env` file
-
-5. **Development**
+3. **Start Development Server**
 ```bash
 npm run dev
 ```
 
-6. **Build for Production**
-```bash
-npm run build
-```
+## Features
 
-## Project Structure
-```
-moworks-ai/
-├── src/
-│   ├── components/        # React components
-│   ├── contexts/         # React context providers
-│   ├── lib/             # Utility functions and API clients
-│   ├── config/          # Configuration files
-│   └── assets/          # Static assets
-├── public/              # Public assets
-└── package.json         # Project dependencies
-```
+### 1. Dual AI Analysis
+- **Perplexity (Mixtral-8x7B)**
+  - Fast and efficient analysis
+  - Great for quick insights
+- **Claude-3 Opus**
+  - More detailed analysis
+  - Better for complex scenarios
 
-## Key Components
-- **AnalysisForm**: Main form for submitting analysis requests
-- **ResultsDisplay**: Displays analysis results in a structured format
-- **UserDashboard**: Shows user's analysis history and limits
-- **AuthContext**: Manages authentication state
-- **AnalysisContext**: Handles analysis state and API calls
+### 2. Analysis Components
+- Common Problems Analysis
+- Tools & Limitations Assessment
+- Solution Recommendations
+- Benefits & ROI Projections
+
+### 3. User Dashboard
+- Track daily analysis usage
+- View analysis history
+- Download reports as PDF
+- Monitor rate limits
+
+## Configuration Guide
+
+### Firebase Setup
+1. Create a Firebase project
+2. Enable Google Authentication
+3. Add authorized domains
+4. Copy configuration to `.env`
+
+### Upstash Redis Setup
+1. Create an Upstash Redis database
+2. Copy URL and token to `.env`
+3. Rate limiting is automatically configured
+
+### AI Model Setup
+1. Get API keys from:
+   - [Perplexity AI](https://perplexity.ai)
+   - [Anthropic (Claude)](https://anthropic.com)
+2. Add keys to `.env`
+
+## Architecture
+
+```
+src/
+├── components/        # React components
+├── contexts/         # React context providers
+├── lib/             # Core functionality
+│   ├── models/      # AI model integrations
+│   └── redis.ts     # Rate limiting
+└── config/          # Configuration
+```
 
 ## Rate Limiting
+
 - 3 analyses per user per day
 - Resets at midnight UTC
-- Tracked using Firebase Firestore
+- Tracked per user via Redis
+- Clearly displayed in dashboard
 
-## API Integration
-- **Perplexity API**: Used for generating business analyses
-- **Firebase Auth**: Handles user authentication
-- **Firestore**: Stores user data and analysis history
+## Security
 
-## Deployment
-The application can be deployed to various platforms:
-- Vercel
-- Netlify
-- Firebase Hosting
+- Firebase Authentication
+- Secure API key handling
+- Rate limiting protection
+- No client-side key exposure
 
 ## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to the branch
-5. Open a pull request
 
-## License
-MIT License
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Open pull request
 
 ## Support
-For support, email support@moworks.ai
+
+- GitHub Issues
+- Email: support@moworks.ai
+- [LinkedIn](https://linkedin.com/company/moworks-ai)
+
+## License
+
+MIT License - see LICENSE file

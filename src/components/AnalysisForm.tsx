@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useAnalysis } from '../contexts/AnalysisContext';
-import { Globe, Building, Users, Briefcase } from 'lucide-react';
+import { Globe, Building, Users, Briefcase, Brain } from 'lucide-react';
+import type { AIModel } from '../lib/models/types';
 
 const regions = [
   'North America', 'Europe', 'Asia Pacific', 'Latin America', 
@@ -43,6 +44,19 @@ const departments = [
   'IT', 'Customer Service', 'R&D', 'Legal', 'Production'
 ];
 
+const models: { id: AIModel; name: string; description: string }[] = [
+  {
+    id: 'perplexity',
+    name: 'Perplexity',
+    description: 'Fast and efficient analysis using Mixtral-8x7B'
+  },
+  {
+    id: 'claude',
+    name: 'Claude',
+    description: 'Advanced analysis using Claude-3 Opus'
+  }
+];
+
 function AnalysisForm() {
   const { user, signIn } = useAuth();
   const { performAnalysis, loading } = useAnalysis();
@@ -50,7 +64,8 @@ function AnalysisForm() {
     region: '',
     industry: '',
     companySize: '',
-    department: ''
+    department: '',
+    model: 'perplexity' as AIModel
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,10 +80,13 @@ function AnalysisForm() {
     await performAnalysis(formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
     }));
   };
 
@@ -108,6 +126,51 @@ function AnalysisForm() {
           options={departments}
         />
       </div>
+
+      <div className="bg-white rounded-lg p-4">
+        <label className="block text-sm font-playful font-medium text-ink mb-4">
+          Select AI Model
+        </label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {models.map(model => (
+            <label
+              key={model.id}
+              className={`relative flex items-start p-4 cursor-pointer rounded-lg border-2 transition-all ${
+                formData.model === model.id
+                  ? 'border-coral-500 bg-coral-50'
+                  : 'border-gray-200 hover:border-coral-200'
+              }`}
+            >
+              <input
+                type="radio"
+                name="model"
+                value={model.id}
+                checked={formData.model === model.id}
+                onChange={handleChange}
+                className="sr-only"
+              />
+              <div className="flex items-center">
+                <Brain className={`w-5 h-5 ${
+                  formData.model === model.id ? 'text-coral-500' : 'text-gray-400'
+                }`} />
+                <div className="ml-3">
+                  <p className={`text-sm font-medium ${
+                    formData.model === model.id ? 'text-coral-900' : 'text-gray-900'
+                  }`}>
+                    {model.name}
+                  </p>
+                  <p className={`text-sm ${
+                    formData.model === model.id ? 'text-coral-700' : 'text-gray-500'
+                  }`}>
+                    {model.description}
+                  </p>
+                </div>
+              </div>
+            </label>
+          ))}
+        </div>
+      </div>
+
       <button
         type="submit"
         disabled={loading}
